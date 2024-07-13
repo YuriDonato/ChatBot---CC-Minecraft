@@ -1,0 +1,11 @@
+Nome do Periferico: chatBox
+
+1. sendFormattedToastToPlayer 
+2. getConfiguration 
+3. getName 
+4. sendToastToPlayer 
+5. sendMessage 
+6. sendFormattedMessage 
+7. sendFormattedMessageToPlayer 
+8. getOperationCooldown 
+9. sendMessageToPlayer 

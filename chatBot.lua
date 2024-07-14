@@ -1,6 +1,12 @@
 -- Wrapping the chatbot peripheral
 local chatbot = peripheral.wrap("back")
 
+-- Wrapping the energy peripheral
+local detector = peripheral.find("energyDetector")
+
+-- Wrapping the Inventory Manager peripheral
+local manager = peripheral.find("inventoryManager")
+
 -- Table of jokes
 local jokes = {
     "Por que o livro de matematica se suicidou? Porque tinha muitos problemas.",
@@ -10,16 +16,51 @@ local jokes = {
     "Qual eh o cumulo do desperdicio? Passar um trote para o orelhao."
 }
 
--- Infinite loop to listen for chat events
-while true do
-    local event, username, message, uuid, isHidden = os.pullEvent("chat")
+-- Function to send a joke to the chat
+local function sendJoke(username)
+    local joke = jokes[math.random(#jokes)]
+    chatbot.sendMessage(joke, "GLADOS", "<>", "&b")
+end
 
-    if message == "oi glados" then
-        chatbot.sendMessage("Olá " .. username .. ", bem-vindo.", "GLADOS", "<>", "&b", 30)
-    end
-    
-    if message == "glados, me conte uma piada" then
-        local joke = jokes[math.random(#jokes)]
-        chatbot.sendMessage("" .. joke, "GLADOS", "<>", "&b", 30)
+-- Function to say Hello
+local function sayHello(username)
+    chatbot.sendMessage("Olá " .. username .. ", bem-vindo.", "GLADOS", "<>", "&b")
+end
+
+-- Function to say actual energy flow
+local function sayEnergy(username)
+    local energy = detector.getTransferRate()
+    chatbot.sendMessage("O fluxo de energia principal eh de " .. energy .. " RF/t.", "GLADOS", "<>", "&b")
+end
+
+-- Function to receive blocks
+local function receiveBlocks(username)
+    if(username == "TiozaoDosGames") then
+        manager1.addItemToPlayer("up", {name="minecraft:cobblestone", toSlot=36, count=32})
+    else
+        manager2.addItemToPlayer("up", {name="minecraft:cobblestone", toSlot=36, count=16})
     end
 end
+
+function start()
+    -- Infinite loop to listen for chat events
+    while true do
+        local event, username, message, uuid, isHidden = os.pullEvent("chat")
+
+        if message == "oi glados" then
+            sayHello(username)
+        end
+        
+        if message == "glados, me conte uma piada" then
+            sendJoke(username)
+        end
+
+        if message == "glados, qual a taxa de energia principal?" then
+            sayEnergy(username)
+        end
+    end
+end
+
+return {
+    start = start
+}

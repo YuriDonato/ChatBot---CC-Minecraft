@@ -1,2 +1,5 @@
-local start = require "start"
-start.main()
+local main = require "chatBot"
+
+while true do
+    main.start()
+end

@@ -4,9 +4,6 @@ local chatbot = peripheral.wrap("back")
 -- Wrapping the energy peripheral
 local detector = peripheral.find("energyDetector")
 
--- Wrapping the Inventory Manager peripheral
-local manager = peripheral.find("inventoryManager")
-
 -- Table of jokes
 local jokes = {
     "Por que o livro de matematica se suicidou? Porque tinha muitos problemas.",
@@ -31,15 +28,6 @@ end
 local function sayEnergy(username)
     local energy = detector.getTransferRate()
     chatbot.sendMessage("O fluxo de energia principal eh de " .. energy .. " RF/t.", "GLADOS", "<>", "&b")
-end
-
--- Function to receive blocks
-local function receiveBlocks(username)
-    if(username == "TiozaoDosGames") then
-        manager1.addItemToPlayer("up", {name="minecraft:cobblestone", toSlot=36, count=32})
-    else
-        manager2.addItemToPlayer("up", {name="minecraft:cobblestone", toSlot=36, count=16})
-    end
 end
 
 function start()

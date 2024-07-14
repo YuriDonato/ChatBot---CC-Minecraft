@@ -8,6 +8,9 @@ local jokesAll = require "jokes/pt_br"
 
 local jokes = jokesAll.jokes
 
+-- Get Diorito Function
+local inventory = require "inventoryManager"
+
 -- Function to send a joke to the chat
 local function sendJoke(username)
     local joke = jokes[math.random(#jokes)]
@@ -16,7 +19,7 @@ end
 
 -- Function to say Hello
 local function sayHello(username)
-    chatbot.sendMessage("Olá " .. username .. ", bem-vindo.", "GLADOS", "<>", "&b")
+    chatbot.sendMessage("Ola " .. username .. ", bem-vindo.", "GLADOS", "<>", "&b")
 end
 
 -- Function to say actual energy flow
@@ -40,6 +43,10 @@ function start()
 
         if message == "glados, qual a taxa de energia principal?" then
             sayEnergy(username)
+        end
+
+        if message == "glados, me passa diorito" then
+            inventory.receiveDioritoPolido(username)
         end
     end
 end

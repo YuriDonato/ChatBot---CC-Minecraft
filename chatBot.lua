@@ -4,14 +4,9 @@ local chatbot = peripheral.wrap("back")
 -- Wrapping the energy peripheral
 local detector = peripheral.find("energyDetector")
 
--- Table of jokes
-local jokes = {
-    "Por que o livro de matematica se suicidou? Porque tinha muitos problemas.",
-    "Por que a vaca foi para o espaco? Para se encontrar com o vacuo!",
-    "O que o pato disse para a pata? Vem qua!",
-    "Qual eh o rei dos queijos? O reiqueijao.",
-    "Qual eh o cumulo do desperdicio? Passar um trote para o orelhao."
-}
+local jokesAll = require "jokes/pt_br"
+
+local jokes = jokesAll.jokes
 
 -- Function to send a joke to the chat
 local function sendJoke(username)

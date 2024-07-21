@@ -8,7 +8,11 @@ local function commandsList(commands, username)
         end
     
         if commands == "glados, me conte uma piada" then
-            chatbot.sendJoke()
+            chatbot.sendJoke("pt_br")
+        end
+
+        if commands == "glados, tell me a joke" then
+            chatbot.sendJoke("en_us")
         end
 
         if commands == "glados, qual a taxa de energia principal?" then
@@ -17,6 +21,15 @@ local function commandsList(commands, username)
 
         if commands == "glados, me passa diorito" then
             inventory.receiveDioritoPolido(username)
+        end
+
+        if commands == "glados reiniciar" then
+            chatbot.handleReload()
+            os.reboot()
+        end
+
+        if commands == "glados, me conte um segredo" then
+            chatbot.saySecret(username)
         end
 end
 

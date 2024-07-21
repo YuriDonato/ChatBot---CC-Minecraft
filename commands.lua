@@ -12,7 +12,7 @@ local function commandsList(commands, username)
         end
 
         if commands == "glados, qual a taxa de energia principal?" then
-            chatbot.sayEnergy(username)
+            chatbot.sayEnergy()
         end
 
         if commands == "glados, me passa diorito" then

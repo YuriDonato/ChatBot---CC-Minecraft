@@ -24,7 +24,7 @@ local function sayHello(username)
 end
 
 -- Function to say actual energy flow
-local function sayEnergy(username)
+local function sayEnergy()
     local energy = detector.getTransferRate()
         chatbot.sendMessage("O fluxo de energia principal eh de " .. energy .. " RF/t.", "GLADOS", "<>", "&b")
 end

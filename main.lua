@@ -1,8 +1,6 @@
 local chatbot = peripheral.wrap("back")
 local chatBot = require "chatBot"
 local commandsAll = require "commands"
-local inventoryManager = require "inventoryManager"
-local commands = commandsAll.commandsList(commands)
 
 
 function start()
@@ -10,11 +8,7 @@ function start()
     -- Infinite loop to listen for chat events
     while true do
         local event, username, message, uuid, isHidden = os.pullEvent("chat")
-            if commands then
-                chatBot.sayHello(username)
-            end
-
-    
+                commandsAll.commandsList(message, username)
     end
 end
 

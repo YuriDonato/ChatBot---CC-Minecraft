@@ -13,7 +13,7 @@ local jokes = jokesAll.jokes
 local inventory = require "inventoryManager"
 
 -- Function to send a joke to the chat
-local function sendJoke(username)
+local function sendJoke()
     local joke = jokes[math.random(#jokes)]
         chatbot.sendMessage(joke, "GLADOS", "<>", "&b")
 end

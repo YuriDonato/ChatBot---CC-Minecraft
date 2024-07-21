@@ -1,23 +1,25 @@
 -- Commands list for chatbot
-local chatbot = peripheral.wrap("back")
+local chatbot = require "chatBot"
+local inventory = require "inventoryManager"
 
-local function commandsList(commands)
+local function commandsList(commands, username)
         if commands == "ola glados" then
-            commands.sayHello(username)
+            chatbot.sayHello(username)
         end
     
         if commands == "glados, me conte uma piada" then
-            commands.sendJoke(username)
+            chatbot.sendJoke()
         end
 
         if commands == "glados, qual a taxa de energia principal?" then
-            commands.sayEnergy(username)
+            chatbot.sayEnergy(username)
         end
 
         if commands == "glados, me passa diorito" then
-            commands.inventory.receiveDioritoPolido(username)
+            inventory.receiveDioritoPolido(username)
         end
 end
+
 return{
     commandsList = commandsList
 }

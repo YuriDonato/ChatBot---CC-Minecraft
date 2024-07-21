@@ -1,5 +1,3 @@
-local chatbot = peripheral.wrap("back")
-local chatBot = require "chatBot"
 local commandsAll = require "commands"
 
 
